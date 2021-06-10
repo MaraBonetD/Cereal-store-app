@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block content %}
+
+    <h1>{{ product.name }}</h1>
+    <p>{{ product.brand }}</p>
+    <p>Price: {{ product.price }} kr.</p>
+    <p>{{ product.description }}</p> <!--TODO: move this from single_product section-->
+    {% if product.on_sale %}
+        <p>Is it on sale? Yes</p>
+    {% else %}
+        <p>Is it on sale? No</p>
+    {% endif %}
+    {% for product_image in products.productimage_set.all %}
+        <img src="{{ product_image.image }}" class="product_img" />
+    {% endfor %}
+    <p>Average rating for this product: {{ average_rating }}</p>
+    {% for review in reviews %}
+        {% include 'products/single_review.html' with review=review%} <!--TODO: try to give max 10 reviews for that product-->
+    {% endfor %}
+    {% if user.is_authenticated %}
+        <a href="{% url 'add_review' product.id %}" class="block btn btn-primary"> Review product</a>
+        <a href="{% url 'delete_product' product.id %}" class="block btn btn-primary"> Delete product</a>
+        <a href="{% url 'update_product' product.id %}" class="block btn btn-primary"> Update product</a>
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+    <h1>Profile</h1>
+    <img src="{% static profile_picture %}" class="profile-picture"/>
+    <form class="form form-horizontal" method="post">
+        {% csrf_token%}
+        {{ form }}
+        <input type="submit" class="btn btn-primary" value="Update"/>
+    </form>
+    <form class="d-flex" action="{% url 'order_history' %}" method="get">
+    <button class="btn btn-outline-success" type="submit">Order history</button>
+    </form>
+{% endblock %}

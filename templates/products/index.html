@@ -1,0 +1,19 @@
+<!--<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>products</title>
+</head>
+<body>
+
+</body>
+</html>-->
+{% extends 'base.html' %}
+{% block content %}
+    <h2>products</h2>
+    <div class="products">
+        {%  for product in products_list %}
+            {% include 'products/single_product.html' with product=product %}
+        {% endfor %}
+    </div>
+{% endblock %}

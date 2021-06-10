@@ -1,0 +1,8 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h4>Order details for order {{ order.id }}: </h4>
+    {% for obj in products_list %}
+        <p>Product: "{{ obj.product.name }}" , brand: {{ obj.product.brand }}, unitary price: {{ obj.product.price }}, quantity: {{ obj.quantity }}</p>
+    {% endfor %}
+    <p> Total price: {{ obj.order_price }}</p>
+{% endblock %}

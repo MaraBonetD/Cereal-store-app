@@ -1,0 +1,17 @@
+<!--<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>search_history</title>
+</head>
+<body>
+
+</body>
+</html>-->
+{% extends 'base.html' %}
+{% block content %}
+    <h2>search_history</h2>
+    {% for search in search_history_list %}
+        <p>{{ search }}</p>
+    {% endfor %}
+{% endblock %}

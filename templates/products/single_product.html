@@ -1,0 +1,15 @@
+<div class="well product">
+    <a href="{% url 'product_details' product.id %}">
+        <div class="img-wrap"><img class="product-img" src="{{ product.image }}"/></div>
+
+        <h4>{{ product.name }}</h4>
+        <p>{{ product.brand }}</p>
+        <p>Price: {{ product.price }} kr.</p>
+        <p>{{ product.description }}</p> <!--TODO: move this to the details section-->
+        {% if product.on_sale %}
+            <p>Is it on sale? Yes</p>
+        {% else %}
+            <p>Is it on sale? No</p>
+        {% endif %}
+    </a>
+</div>

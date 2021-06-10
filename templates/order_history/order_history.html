@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h2>Your order history:</h2>
+    {% for order in orders_list%}
+        <a href="{% url 'order_details' order.id %}">
+            <h4>Order number: {{ order.id }}</h4>
+            <p>Customer : {{ order.customer.profile.full_name}}{% comment %}profile class=user{% endcomment %}</p>
+            <p>Created: {{ order.created_at }}</p>
+            {% if order.is_paid == False %}
+                <p>Payment pending </p>
+            {% else %}
+                <p>Payment successful </p>
+            {% endif %}
+            <p>Price: {{ order.price }}</p>
+            <p>Shipping address: {{ order.shipping_address }}</p>
+        </a>
+    {% endfor %}
+{% endblock %}
